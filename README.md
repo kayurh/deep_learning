@@ -93,9 +93,230 @@ Deep learning does not significantly outperform classical machine learning on sm
 
 ---
 
-## 🚀 How to Run
+## MLP Results
 
-pip install -r requirements.txt
+- Test Accuracy: ~0.96 – 0.99
+- Performance is comparable to SVM baseline (98.8%)
+
+### Key Observations:
+- No significant improvement over SVM
+- Slight fluctuations due to small dataset size
+- Dropout helps reduce overfitting
+
+---
+## Model Comparison
+
+| Model | Accuracy | Notes |
+|------|--------|------|
+| SVM | 98.84% | Strong baseline |
+| MLP | ~97–99% | Comparable performance |
+
+### Interpretation
+
+The deep neural network does not significantly outperform the classical SVM model. This is expected because:
+
+- The dataset is small (569 samples)
+- Features are already well-structured
+- No spatial relationships exist
+
+Thus, classical machine learning methods remain highly effective.
+
+---
+## 🧠 Milestone 2 — Deep Learning Results & Analysis
+
+This section evaluates the performance of a Multi-Layer Perceptron (MLP) and compares it with the classical SVM baseline.
+
+---
+
+## 📊 Final Results
+
+### Baseline (SVM)
+- Validation Accuracy: 96.47%
+- Test Accuracy: 98.84%
+
+### Deep Learning Model (MLP)
+- Test Accuracy: ~96–99% (depending on training run)
+- Typical observed range: 97–98%
+
+---
+
+## 📈 Training Behavior Analysis
+
+### Training vs Validation Accuracy
+
+During training, we monitor:
+- Training accuracy
+- Validation accuracy
+
+### Possible Scenarios:
+
+#### ✅ 1. Good Generalization
+- Training accuracy ≈ Validation accuracy
+- Curves rise together and stabilize
+
+**Meaning:**
+The model learns meaningful patterns and generalizes well to unseen data.
+
+---
+
+#### ⚠️ 2. Overfitting
+- Training accuracy → very high (≈100%)
+- Validation accuracy stagnates or decreases
+
+**Meaning:**
+The model memorizes training data but fails to generalize.
+
+**Solution Applied:**
+- Dropout (0.3)
+- Reduced overfitting gap
+
+---
+
+#### ⚠️ 3. Underfitting
+- Both training and validation accuracy are low
+
+**Meaning:**
+The model is too simple or not trained enough.
+
+**Possible fixes:**
+- Increase model size
+- Train longer
+- Adjust learning rate
+
+---
+
+## ⚙️ Experiments Performed
+
+### 1. Baseline MLP
+- Architecture: 64 → 32 → 1
+- Optimizer: Adam
+- Result: ~97–98%
+
+---
+
+### 2. MLP with Dropout
+- Dropout: 0.3
+- Effect:
+  - Reduced overfitting
+  - More stable validation accuracy
+
+---
+
+### 3. (Optional) Optimizer Comparison
+
+| Optimizer | Observation |
+|----------|------------|
+| Adam | Fast convergence, stable |
+| SGD | Slower, may need tuning |
+
+---
+
+## 📊 Detailed Evaluation Metrics
+
+### Confusion Matrix Interpretation
+
+|                | Predicted Malignant | Predicted Benign |
+|----------------|-------------------|------------------|
+| Actual Malignant | True Positive | False Negative |
+| Actual Benign | False Positive | True Negative |
+
+---
+
+### ⚠️ Critical Metric: False Negatives
+
+**False Negative = Malignant classified as Benign**
+
+👉 This is the most dangerous error in medical diagnosis.
+
+---
+
+### Observed Behavior
+
+- Very low false negatives (often 0 or 1)
+- High recall for malignant class
+
+**Interpretation:**
+The model is reliable for detecting cancer cases.
+
+---
+
+## 📊 Precision, Recall, F1-Score
+
+- **Precision**: How many predicted positives are correct  
+- **Recall**: How many actual positives are detected  
+- **F1-score**: Balance between precision and recall  
+
+### Key Insight:
+- High recall is more important than precision in medical tasks
+- Missing cancer cases is worse than false alarms
+
+---
+
+## ⚖️ Final Model Comparison
+
+| Model | Accuracy | Strengths | Weaknesses |
+|------|--------|----------|-----------|
+| SVM | 98.84% | Very stable, fast, high accuracy | Less flexible |
+| MLP | ~97–99% | Flexible, scalable | Slightly less stable |
+
+---
+
+## 🧠 Key Insights
+
+### 1. Deep Learning vs Classical ML
+
+The deep neural network does not significantly outperform the SVM model.
+
+**Reason:**
+- Small dataset (569 samples)
+- Features already engineered
+- No spatial or temporal structure
+
+---
+
+### 2. When Deep Learning Helps
+
+Deep learning would be more effective if:
+- Raw images were used instead of features
+- Dataset size was much larger
+- Complex feature interactions existed
+
+---
+
+### 3. When Classical ML is Better
+
+SVM is preferable when:
+- Data is small
+- Features are structured
+- Training speed matters
+
+---
+
+## 🌍 Real-World Interpretation
+
+This dataset represents a **medical diagnosis problem**.
+
+### Implications:
+
+- High accuracy (~98%) means the model is highly reliable
+- Low false negatives ensures cancer cases are not missed
+- Models like this can assist doctors, not replace them
+
+---
+
+### ⚠️ Limitations
+
+- Dataset is small → may not generalize to all populations
+- Real-world data is noisier
+- Ethical considerations apply in medical AI
+
+---
+
+## ✅ Final Conclusion
+
+- Both SVM and MLP achieve very high accuracy
+- Deep learning provides **no significant advantage** in this case
+- Classical methods remain highly effective for structured tabular data
 
 ---
 
